@@ -6,3 +6,6 @@
 *.class
 *.jar
 *~
+~*
+*.war
+*.ear
