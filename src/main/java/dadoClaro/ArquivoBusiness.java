@@ -1,3 +1,16 @@
+/*
+ * Gessyca.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package dadoClaro;
 
 import java.io.IOException;
@@ -10,15 +23,15 @@ import org.primefaces.model.UploadedFile;
 
 public class ArquivoBusiness {
 	public List<Arquivo> coletarDados(UploadedFile arquivo) throws IOException {
-		StringBuffer sb = lerArquivo(arquivo);
+		StringBuilder sb = lerArquivo(arquivo);
 		List<String> dadosSeparadosLinha = separarDadosPorLinha(sb);
 		List<Arquivo> lista = adicionarDadosLista(dadosSeparadosLinha);
 		return lista;
 	}
 
-	private StringBuffer lerArquivo(UploadedFile arquivo) throws IOException {
+	private StringBuilder lerArquivo(UploadedFile arquivo) throws IOException {
 		InputStream is = arquivo.getInputstream();
-		StringBuffer sb = new StringBuffer("");
+		StringBuilder sb = new StringBuilder("");
 		int i;
 		while ((i = is.read()) != -1) {
 			sb.append((char) i);
@@ -27,15 +40,15 @@ public class ArquivoBusiness {
 		return sb;
 	}
 
-	private List<String> separarDadosPorLinha(StringBuffer sb)
+	private List<String> separarDadosPorLinha(StringBuilder sb)
 			throws IOException {
-		// Dados irão ser armazenados quando a tabela iniciar
+		// Dados irï¿½o ser armazenados quando a tabela iniciar
 		int index = sb.indexOf("Tel;");
 		String x = sb.substring(index);
 		// Separar por linha
 		String[] dadosPorLinha = x.split(System.getProperty("line.separator"));
 		List<String> listaDadosPorLinha = Arrays.asList(dadosPorLinha);
-		// Retirando cabeçalho da tabela
+		// Retirando cabeï¿½alho da tabela
 		listaDadosPorLinha = listaDadosPorLinha.subList(1,
 				listaDadosPorLinha.size());
 		return listaDadosPorLinha;
