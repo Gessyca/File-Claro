@@ -1,0 +1,68 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Dados Claro</title>
+</h:head>
+<h:body>
+	<h:form id="uploadFile" enctype="multipart/form-data">
+
+		<p:fileUpload
+			fileUploadListener="#{ArquivoController.carregarArquivo}"
+			mode="advanced" auto="true" allowTypes="/(\.|\/)(txt)$/"
+			update="arquivosClaro" />
+		<p:dataTable id="arquivosClaro" var="c"
+			value="#{ArquivoController.arquivosClaro}" stickyHeader="true">
+			<p:column style="width:16px">
+				<p:rowToggler />
+			</p:column>
+			<p:column headerText="Telefone">
+				<h:outputText value="#{c.telefone}" />
+			</p:column>
+			<p:column headerText="Seção">
+				<h:outputText value="#{c.secao}" />
+			</p:column>
+			<p:rowExpansion>
+				<p:panel header="Dados Completos">
+					<p:panelGrid columnClasses="label,value" columns="6">
+						<h:outputText value="Data:" style="font-weight:bold" />
+						<h:outputText value="#{c.data}" />
+						<h:outputText value="Hora:" style="font-weight:bold" />
+						<h:outputText value="#{c.hora}" />
+						<h:outputText value="Origem(UF)-Destino:" style="font-weight:bold" />
+						<h:outputText value="#{c.origemDestino}" />
+						<h:outputText value="Número:" style="font-weight:bold" />
+						<h:outputText value="#{c.numero}" />
+						<h:outputText value="Duração Quantidade:" style="font-weight:bold" />
+						<h:outputText value="#{c.duracaoQuantidade}" />
+						<h:outputText value="Tarifa:" style="font-weight:bold" />
+						<h:outputText value="#{c.tarifa}" />
+						<h:outputText value="Valor:" style="font-weight:bold" />
+						<h:outputText value="#{c.valor}" />
+						<h:outputText value="Valor Cobrado:" style="font-weight:bold" />
+						<h:outputText value="#{c.valorCobrado}" />
+						<h:outputText value="Nome:" style="font-weight:bold" />
+						<h:outputText value="#{c.nome}" />
+						<h:outputText value="CC:" style="font-weight:bold" />
+						<h:outputText value="#{c.cc}" />
+						<h:outputText value="Matrícula:" style="font-weight:bold" />
+						<h:outputText value="#{c.matricula}" />
+						<h:outputText value="Sub-Seção:" style="font-weight:bold" />
+						<h:outputText value="#{c.subSecao}" />
+						<h:outputText value="Tipo Imposto:" style="font-weight:bold" />
+						<h:outputText value="#{c.tipoImposto}" />
+						<h:outputText value="Descrição:" style="font-weight:bold" />
+						<h:outputText value="#{c.descricao}" />
+						<h:outputText value="Cargo:" style="font-weight:bold" />
+						<h:outputText value="#{c.cargo}" />
+					</p:panelGrid>
+				</p:panel>
+			</p:rowExpansion>
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>
