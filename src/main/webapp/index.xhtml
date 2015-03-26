@@ -29,8 +29,13 @@
 			mode="advanced" auto="true" allowTypes="/(\.|\/)(txt)$/"
 			update="arquivosClaro" />
 		<h:commandLink >
-		TESTE
+		EXCEL
 			<p:dataExporter type="xls" target="arquivosClaro"
+				fileName="dadosClaro" />
+		</h:commandLink>
+		<h:commandLink >
+		PDF
+			<p:dataExporter type="pdf" target="arquivosClaro"
 				fileName="dadosClaro" />
 		</h:commandLink>
 		<p:dataTable id="arquivosClaro" var="c"
